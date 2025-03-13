@@ -31,5 +31,14 @@ tickets = data['Ticket'].unique()[:50]
 
 # drop the name and ticket columns
 data1 = data.drop(columns=['Name', 'Ticket'])
-data1.shape
-print("After dropped name and ticket : \n", data1)
+data1 = data1.shape
+#print("After dropped name and ticket : \n", data1)
+
+data2 = round((data.isnull().sum()/data.shape[0])*100,2)
+#print("After value missing : \n", data2)
+
+data3 = data.drop(columns='Cabin')
+data3.dropna(subset=['Embarked'], axis=0, inplace=True)
+data3 = data3.shape
+print("after handling missing data : \n", data3)
+
